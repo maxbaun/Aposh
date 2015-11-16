@@ -1,0 +1,24 @@
+.popular-posts{
+
+  .title{
+    font-family: narzissdropsregular;
+    font-size: 46px;
+  }
+
+  .text,
+  .preview,
+  .preview a{
+    color:$color_footerBg !important;
+  }
+
+  .thumb{
+    border: 2px solid $color_postThumbBorder;
+    padding: 2px;
+
+    img{
+      width: 78px;
+      height: 78px;
+    }
+  }
+}
+

@@ -1,0 +1,9 @@
+#map{
+  height:500px;
+}
+
+@media (max-width: $screen-md-min) {
+  #map{
+    height:250px;
+  }
+}

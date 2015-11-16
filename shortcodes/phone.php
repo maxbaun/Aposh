@@ -1,0 +1,15 @@
+<?php
+
+  add_shortcode("phone-link","phoneLink");
+  function phoneLink($atts, $content = null){
+    extract(shortcode_atts(array(
+      "class" => ""
+    ), $atts));
+
+    $html = '<a class="'.$class.'" href="tel:'. preg_replace('/\D+/', '', get_option('aposh_phone')).'">';
+    $html .= get_option('aposh_phone');
+    $html .= '</a>';
+
+    return force_balance_tags($html);
+  }
+?>

@@ -1,0 +1,70 @@
+body:after {
+  content: url($images_dir + 'lightbox/close.png') url($images_dir + 'lightbox/loading.gif') url($images_dir + 'lightbox/prev.png') url($images_dir + 'lightbox/next.png');
+}
+
+.lb-cancel {
+  background-image: url($images_dir +'lightbox/loading.gif');
+}
+
+.lb-nav a.lb-next,
+.lb-nav a.lb-prev{
+  @include transition(opacity $trans_time $trans_mode !important) ;
+}
+
+.lb-nav a.lb-prev {
+  background: url($images_dir + 'slider_prev.png') 15px 48% no-repeat;
+}
+
+.lb-nav a.lb-next {
+  background-image: url($images_dir + 'slider_next.png');
+  background-position: right 15px center;
+}
+
+.lb-dataContainer {
+  background-color: $color_white;
+  @include border-radius(0px);
+}
+
+.lb-data{
+  text-align: center;
+}
+
+.lb-data .lb-details {
+  text-align: center;
+  margin-left: 7.5%;
+}
+
+.lb-data .lb-caption {
+  font-size: 16px;
+}
+
+.lb-data .lb-number {
+  font-size: 14px;
+}
+
+.lb-closeContainer{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  /*background-color: #e6e6e6;*/
+  z-index: 999;
+}
+
+.lb-close {
+  float: left;
+  font-size: 0px;
+  width: 20px;
+  height: 20px;
+  line-height: .5;
+  text-align: center;
+  background: url($images_dir + 'lightbox/close.png') top right no-repeat;
+  background-size: 15px;
+  outline: none;
+  @include opacity(.7);
+  @include transition(opacity $trans_time $trans_mode !important) ;
+}
+
+.lb-close:hover {
+  cursor:pointer;
+  @include opacity(1);
+}
