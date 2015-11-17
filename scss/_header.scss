@@ -163,6 +163,15 @@
   .phone:hover{
     color:$color_cta !important;
   }
+  .call-icon{
+    background-image: url($images_dir + 'call-text-icon.png');
+    height: $size_call_icon;
+    width: $size_call_icon;
+    background-size: $size_call_icon;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
 }
 
 #page-logo {

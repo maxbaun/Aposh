@@ -32,8 +32,17 @@
               </a>
               <div class="tagline"><?php echo get_option('aposh_tagline'); ?></div>
               <div class="call">
-                <p class="action">give us a call</p>
-                <?php echo do_shortcode('[phone-link class="phone"][/phone-link]'); ?>
+                <div class="text" style="display:inline-block;vertical-align:middle;">
+                  <p class="action"><?php echo get_option('aposh_call_text'); ?></p>
+                  <?php echo do_shortcode('[phone-link class="phone"][/phone-link]'); ?>
+                </div>
+                <?php 
+                  $call_icon = get_option('aposh_call_icon');
+                  
+                  if(isset($call_icon) && $call_icon != ''){
+                    echo do_shortcode('[phone-link class="phone"]<span class="call-icon"></span>[/phone-link]');
+                  } 
+                ?>
               </div>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-nav">
                 <span class="sr-only">Toggle navigation</span>

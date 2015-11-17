@@ -6,8 +6,14 @@
       "class" => ""
     ), $atts));
 
-    $html = '<a class="'.$class.'" href="tel:'. preg_replace('/\D+/', '', get_option('aposh_phone')).'">';
-    $html .= get_option('aposh_phone');
+    $html = '';
+
+    $html .= '<a class="'.$class.'" href="tel:'. preg_replace('/\D+/', '', get_option('aposh_phone')).'">';
+    
+    if(isset($content) && $content != null && $content != '')
+      $html .= do_shortcode($content);
+    else
+      $html .= get_option('aposh_phone');
     $html .= '</a>';
 
     return force_balance_tags($html);

@@ -1,7 +1,7 @@
 /* ==========================================================================
 	Imports
 /* ========================================================================== */
-@import '../js/vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss','../js/vendor/bower-bourbon/bourbon','reset', 'variables','buttons','icons','fonts', 'components' , 'header' , 'footer', 'section', 'video', 'video-thumb' ,'availability', 'home', 'dj_entertainment';
+@import '../js/vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss','../js/vendor/bourbon/app/assets/stylesheets/bourbon','reset', 'variables', 'helpers' ,'buttons','icons','fonts', 'components' , 'header' , 'footer', 'section', 'video', 'video-thumb' ,'availability', 'home', 'dj_entertainment','google_maps';
 
 /* ==========================================================================
 	Base
@@ -236,7 +236,6 @@ input.button:active {
     vertical-align: middle;
   }
 }
-
 
 /* tablet styling */
 @media (max-width: $screen-md-min) {

@@ -13,6 +13,7 @@
   require_once('date-inputs.php');
   require_once('phone.php');
   require_once('rental.php');
+  require_once('map.php');
 
   add_shortcode("page-quote","pageQuote");
   function pageQuote($atts, $content = null){

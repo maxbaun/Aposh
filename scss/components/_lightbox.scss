@@ -1,3 +1,8 @@
+.lightbox{
+  display:none;
+}
+
+
 body:after {
   content: url($images_dir + 'lightbox/close.png') url($images_dir + 'lightbox/loading.gif') url($images_dir + 'lightbox/prev.png') url($images_dir + 'lightbox/next.png');
 }

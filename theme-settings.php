@@ -11,6 +11,16 @@ function setup_theme_admin_menus() {
 
 function theme_settings_page(){
   if (isset($_POST["update_settings"])) {  
+    $call_text = esc_attr($_POST["call_text"]);     
+    update_option("aposh_call_text", $call_text);
+
+    $call_icon = esc_attr($_POST["call_icon"]);     
+    if($call_icon == 'on')
+      $call_icon = 1;
+    else
+      $call_icon = null;
+    update_option("aposh_call_icon", $call_icon);
+
     $facebook_url = esc_attr($_POST["facebook_url"]);     
     update_option("aposh_facebook_url", $facebook_url);
     
@@ -33,6 +43,10 @@ function theme_settings_page(){
     $aposh_posts_per_page = esc_attr($_POST["aposh_posts_per_page"]);     
     update_option("aposh_posts_per_page", $aposh_posts_per_page); 
     
+    // LOCATION 1 SETTINGS
+    $aposh_location_name = esc_attr($_POST["aposh_location_name"]);     
+    update_option("aposh_location_name", $aposh_location_name); 
+
     $aposh_coordinates_long = esc_attr($_POST["aposh_coordinates_long"]);     
     update_option("aposh_coordinates_long", $aposh_coordinates_long); 
     
@@ -53,12 +67,55 @@ function theme_settings_page(){
     
     $aposh_address_1 = esc_attr($_POST["aposh_address_1"]);     
     update_option("aposh_address_1", $aposh_address_1); 
+
+    $aposh_directions = esc_attr($_POST["aposh_directions"]);     
+    update_option("aposh_directions", $aposh_directions);     
     
-    $aposh_address_2 = esc_attr($_POST["aposh_address_2"]);     
-    update_option("aposh_address_2", $aposh_address_2);
+    // $aposh_address_2 = esc_attr($_POST["aposh_address_2"]);     
+    // update_option("aposh_address_2", $aposh_address_2);
     
-    $aposh_address_3 = esc_attr($_POST["aposh_address_3"]);     
-    update_option("aposh_address_3", $aposh_address_3);           
+    // $aposh_address_3 = esc_attr($_POST["aposh_address_3"]);     
+    // update_option("aposh_address_3", $aposh_address_3);     
+
+
+    // END LOCATION 1 SETTINGS  
+
+    // LOCATION 2 SETTINGS
+
+    $aposh_location_name_2 = esc_attr($_POST["aposh_location_name_2"]);     
+    update_option("aposh_location_name_2", $aposh_location_name_2); 
+
+    $aposh_coordinates_long_2 = esc_attr($_POST["aposh_coordinates_long_2"]);     
+    update_option("aposh_coordinates_long_2", $aposh_coordinates_long_2); 
+    
+    $aposh_coordinates_lat_2 = esc_attr($_POST["aposh_coordinates_lat_2"]);     
+    update_option("aposh_coordinates_lat_2", $aposh_coordinates_lat_2);  
+       
+    $aposh_phone_2 = esc_attr($_POST["aposh_phone_2"]);     
+    update_option("aposh_phone_2", $aposh_phone_2); 
+    
+    $aposh_website_2= esc_attr($_POST["aposh_website_2"]);     
+    update_option("aposh_website_2", $aposh_website_2); 
+    
+    $aposh_email_2 = esc_attr($_POST["aposh_email_2"]);     
+    update_option("aposh_email_2", $aposh_email_2);
+    
+    $aposh_address_0_2 = esc_attr($_POST["aposh_address_0_2"]);     
+    update_option("aposh_address_0_2", $aposh_address_0_2);     
+    
+    $aposh_address_1_2 = esc_attr($_POST["aposh_address_1_2"]);     
+    update_option("aposh_address_1_2", $aposh_address_1_2); 
+
+    $aposh_directions_2 = esc_attr($_POST["aposh_directions_2"]);     
+    update_option("aposh_directions_2", $aposh_directions_2);      
+    
+    // $aposh_address_2_2 = esc_attr($_POST["aposh_address_2_2"]);     
+    // update_option("aposh_address_2_2", $aposh_address_2_2);
+    
+    // $aposh_address_3_2 = esc_attr($_POST["aposh_address_3_2"]);     
+    // update_option("aposh_address_3_2", $aposh_address_3_2);
+
+    // END LOCATION 2 SETTINGS          
 
     $aposh_review_count = esc_attr($_POST["aposh_review_count"]);     
     update_option("aposh_review_count", $aposh_review_count);  
@@ -79,6 +136,10 @@ function theme_settings_page(){
     <?php     
   }
   else{
+    
+    $call_text = get_option("aposh_call_text");
+    $call_icon = get_option("aposh_call_icon");
+
     $facebook_url = get_option("aposh_facebook_url");
     $twitter_url = get_option("aposh_twitter_url");
     $pinterest_url = get_option("aposh_pinterest_url");
@@ -88,6 +149,8 @@ function theme_settings_page(){
     
     $aposh_posts_per_page = get_option("aposh_posts_per_page");
 
+    // LOCATION 1 SETTINGS
+    $aposh_location_name = get_option("aposh_location_name");
     $aposh_coordinates_long = get_option("aposh_coordinates_long");
     $aposh_coordinates_lat = get_option("aposh_coordinates_lat");     
     $aposh_phone = get_option("aposh_phone");
@@ -95,8 +158,24 @@ function theme_settings_page(){
     $aposh_email = get_option("aposh_email");
     $aposh_address_0 = get_option("aposh_address_0");
     $aposh_address_1 = get_option("aposh_address_1");
-    $aposh_address_2 = get_option("aposh_address_2");
-    $aposh_address_3 = get_option("aposh_address_3");
+    $aposh_directions = get_option("aposh_directions");
+    // $aposh_address_2 = get_option("aposh_address_2");
+    // $aposh_address_3 = get_option("aposh_address_3");
+    // END LOCATION 1 SETTINGS
+
+    // LOCATION 2 SETTINGS
+    $aposh_location_name_2 = get_option("aposh_location_name_2");
+    $aposh_coordinates_long_2 = get_option("aposh_coordinates_long_2");
+    $aposh_coordinates_lat_2 = get_option("aposh_coordinates_lat_2");     
+    $aposh_phone_2 = get_option("aposh_phone_2");
+    $aposh_website_2 = get_option("aposh_website_2");
+    $aposh_email_2 = get_option("aposh_email_2");
+    $aposh_address_0_2 = get_option("aposh_address_0_2");
+    $aposh_address_1_2 = get_option("aposh_address_1_2");
+    $aposh_directions = get_option("aposh_directions_2");
+    // $aposh_address_2_2 = get_option("aposh_address_2_2");
+    // $aposh_address_3_2 = get_option("aposh_address_3_2");
+    // END LOCATION 2 SETTINGS    
 
     $aposh_review_count = get_option("aposh_review_count");
     $aposh_availability_page = get_option("aposh_availability_page");
@@ -111,6 +190,30 @@ function theme_settings_page(){
     <?php screen_icon('themes'); ?> <h2>Theme Settings</h2>  
   
     <form method="POST" action="">  
+     <table class="form-table">
+        <th><h3>Header Settings</h3></th>  
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="call_text">  
+              Call Text:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="call_text" value="<?php echo $call_text;?>"/>  
+          </td>  
+        </tr>  
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="call_icon">  
+              Show phone icon?  
+            </label>  
+          </th>  
+          <td>  
+            <input type="checkbox" name="call_icon" <?php checked(isset($call_icon)); ?>/>  
+          </td>  
+        </tr>                                                                    
+      </table>
+
       <table class="form-table">
         <th><h3>Social Media Settings</h3></th>  
         <tr valign="top">  
@@ -279,6 +382,17 @@ function theme_settings_page(){
         <th><h3>Contact Settings</h3></th>
         <tr valign="top">  
           <th scope="row">  
+            <label for="aposh_location_name">  
+              Location Name:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_location_name" value="<?php echo $aposh_location_name;?>"/>  
+          </td>  
+        </tr>
+
+        <tr valign="top">  
+          <th scope="row">  
             <label for="aposh_coordinates_long">  
               Longitude:  
             </label>  
@@ -349,6 +463,16 @@ function theme_settings_page(){
         </tr>
         <tr valign="top">  
           <th scope="row">  
+            <label for="aposh_directions">  
+              Google Maps Directions Link:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_directions" value="<?php echo $aposh_directions;?>"/>  
+          </td>  
+        </tr>        
+<!--         <tr valign="top">  
+          <th scope="row">  
             <label for="aposh_address_2">  
               Address Line 2:  
             </label>  
@@ -366,8 +490,122 @@ function theme_settings_page(){
           <td>  
             <input type="text" name="aposh_address_3" value="<?php echo $aposh_address_3;?>"/>  
           </td>  
-        </tr>                                                                  
-      </table>            
+        </tr>   -->                                                                
+      </table>     
+
+      <table class="form-table">
+        <th><h3>Contact Settings (Location 2)</h3></th>
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_location_name_2">  
+              Location Name:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_location_name_2" value="<?php echo $aposh_location_name_2;?>"/>  
+          </td>  
+        </tr>        
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_coordinates_long_2">  
+              Longitude:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_coordinates_long_2" value="<?php echo $aposh_coordinates_long_2;?>"/>  
+          </td>  
+        </tr>
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_coordinates_lat_2">  
+              Latitude:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_coordinates_lat_2" value="<?php echo $aposh_coordinates_lat_2;?>"/>  
+          </td>  
+        </tr>           
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_phone_2">  
+              Phone:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_phone_2" value="<?php echo $aposh_phone_2;?>"/>  
+          </td>  
+        </tr>
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_website_2">  
+              Website:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_website_2" value="<?php echo $aposh_website_2;?>"/>  
+          </td>  
+        </tr>
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_email_2">  
+              Email:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_email_2" value="<?php echo $aposh_email_2;?>"/>  
+          </td>  
+        </tr>
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_address_0_2">  
+              Address Line 0:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_address_0_2" value="<?php echo $aposh_address_0_2;?>"/>  
+          </td>  
+        </tr>                               
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_address_1_2">  
+              Address Line 1:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_address_1_2" value="<?php echo $aposh_address_1_2;?>"/>  
+          </td>  
+        </tr>
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_directions_2">  
+              Google Maps Directions Link:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_directions_2" value="<?php echo $aposh_directions_2;?>"/>  
+          </td>  
+        </tr>        
+<!--         <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_address_2_2">  
+              Address Line 2:  
+            </label>  
+          </th>  
+          <td>
+            <input type="text" name="aposh_address_2_2" value="<?php echo $aposh_address_2_2;?>"/>  
+          </td>  
+        </tr>
+        <tr valign="top">  
+          <th scope="row">  
+            <label for="aposh_address_3_2">  
+              Address Line 3:  
+            </label>  
+          </th>  
+          <td>  
+            <input type="text" name="aposh_address_3_2" value="<?php echo $aposh_address_3_2;?>"/>  
+          </td>  
+        </tr>  -->                                                                 
+      </table>               
       <input type="hidden" name="update_settings" value="Y" />
       <p>  
         <input type="submit" value="Save settings" class="button-primary"/>  

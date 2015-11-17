@@ -37,8 +37,30 @@
   
   <?php if(isset($map) && $map): ?>
   <?php echo do_shortcode('[section-breaker][/section-breaker]'); ?> 
-  <div id="map" data-long="<?php echo get_option('aposh_coordinates_long'); ?>" data-lat="<?php echo get_option('aposh_coordinates_lat'); ?>" data-marker="<?php themeImage('map_marker.png'); ?>">
-  </div>
+  <section style="clear:both;padding:0px;overflow:auto;">
+  <?php echo do_shortcode('[google-map 
+    longitude="'.get_option('aposh_coordinates_long').'" 
+    latitude="'.get_option('aposh_coordinates_lat').'"
+    location="'.get_option('aposh_location_name').'"
+    address="'.get_option('aposh_address_0').'<br/>'.get_option('aposh_address_1').'"
+    cta_link="'.get_option('aposh_directions').'"]
+    [/google-map]')
+  ;?> 
+  <?php echo do_shortcode('[google-map 
+    longitude="'.get_option('aposh_coordinates_long_2').'" 
+    latitude="'.get_option('aposh_coordinates_lat_2').'"
+    location="'.get_option('aposh_location_name_2').'"
+    address="'.get_option('aposh_address_0_2').'<br/>'.get_option('aposh_address_1_2').'"
+    cta_link="'.get_option('aposh_directions_2').'"]
+    [/google-map]')
+  ;?>  
+  </section>
+  
+ <!--  <div id="map" 
+    data-long="<?php echo get_option('aposh_coordinates_long'); ?>" 
+    data-lat="<?php echo get_option('aposh_coordinates_lat'); ?>" 
+    data-marker="<?php themeImage('map_marker.png'); ?>">
+  </div>  -->
   <?php echo do_shortcode('[section-breaker][/section-breaker]'); ?> 
   <?php endif; ?>
 </div>

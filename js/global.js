@@ -13,7 +13,7 @@ require.config({
     "djep" : "http://poshlogin.com/check_req_info_form.js",
 		"jquery": "vendor/jquery/dist/jquery",
     "bootstrap" : "vendor/bootstrap-sass/assets/javascripts/bootstrap",
-    "lightbox" : "vendor/lightbox2/js/lightbox",
+    "lightbox" : "vendor/lightbox2/dist/js/lightbox",
     "stellar" : "vendor/stellar/jquery.stellar",
     "jqueryui" : "vendor/jquery-ui/jquery-ui",
     "bootstrapSelect" : "vendor/bootstrap-select/dist/js/bootstrap-select",
@@ -68,6 +68,7 @@ require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect',
     function initializeSite(){
         resizeFooterContact();
         resizeHomeAvailabityWidget();
+        $('.lightbox:not(.custom-lightbox)').remove();
         // resizeArrows();
 
         var carouselInterval = ($('body').attr('data-carousel-interval') > 0) ? $('body').attr('data-carousel-interval') : false;

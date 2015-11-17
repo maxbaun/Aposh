@@ -33,7 +33,7 @@ function theme_enqueue_scripts(){
 		wp_enqueue_script('livereload');
 
 		wp_enqueue_style('bootstrap-select', get_bloginfo('template_url') . '/js/vendor/bootstrap-select/dist/css/bootstrap-select.css');
-		wp_enqueue_style('lightbox', get_bloginfo('template_url') . '/js/vendor/lightbox2/css/lightbox.css');
+		wp_enqueue_style('lightbox', get_bloginfo('template_url') . '/js/vendor/lightbox2/dist/css/lightbox.css');
 		// wp_enqueue_style('lightbox', get_bloginfo('template_url') . '/css/vendor/lightbox.css');
 		
 	}

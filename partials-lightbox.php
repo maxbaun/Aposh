@@ -1,5 +1,5 @@
 <div id='lightboxOverlay' class='lightboxOverlay'></div>
-<div id='lightbox' class='lightbox'>
+<div id='lightbox' class='lightbox custom-lightbox' style="display:none;">
     <div class='lb-outerContainer'>
         <div class='lb-container'>
             <div class='lb-closeContainer'><a class='lb-close'>x</a>
