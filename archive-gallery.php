@@ -57,11 +57,16 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
             <div id="gallery" class="gallery">
+
               <?php if(is_single()): the_content(); ?>
               <?php else: ?>
+              <?php $count = 0; ?>
+              <div class="row">
               <?php foreach($queries as $query): ?>
+
                 <?php while ($query->have_posts()) : $query->the_post(); ?>
                   <?php
+
                     $link = get_permalink($post->ID);
                     $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'small');
                     $imgStyle = "width: $img[1]px; height: $img[2]px; background-size: $img[1]px $img[2]px; background-image:url($img[0]);";
@@ -69,6 +74,9 @@
                     $class = '';
                     foreach($postTerms as $term){
                       $class .= ' '.$term->slug;
+                    }
+                    if($count > 0 && $count % 4 === 0){
+                        echo '</div><div class="row">';
                     }
                   ?>
                   <div class="col-md-3 gallery-item <?php echo $class; ?>">
@@ -85,8 +93,10 @@
                       <p class="text"><?php echo $post->post_title; ?></p>
                     </a>
                   </div>
+                <?php $count = $count + 1; ?>
                 <?php endwhile; ?>
               <?php endforeach; ?>
+              </div>
             <?php endif; ?>
             </div>
           </div>

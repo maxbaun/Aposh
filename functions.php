@@ -216,9 +216,8 @@ add_action('pre_get_posts','alter_events_query');
 function alter_events_query($query){
   global $categories,$taxonomy;
 
-  if($query->is_main_query() && (getPageTemplate($query) == 'template-gallery-iso.php' || is_tax('image-category'))){
+  if($query->is_main_query() && is_tax('image-category')){
     $taxonomy = 'image-category';
-
     $tax = array(
       $taxonomy
     );

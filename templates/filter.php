@@ -1,5 +1,20 @@
 <?php
- global $categories, $taxonomy; global $filter_text;
+    $taxonomy = 'image-category';
+    $filter_text = 'Categories';
+    $tax = array(
+      $taxonomy
+    );
+    $args = array(
+      'orderby'     => 'name',
+      'hide_empty'  => true,
+      'hierarchical'=> true
+    );
+
+    $categories = get_terms($tax,$args);
+    $catIds = array();
+    foreach ($categories as $category){
+      $catIds[] = $category->term_id;
+    }
 ?>
 
 <div id="filters" class="filters" data-option-key="filter">
@@ -20,7 +35,7 @@
                 continue;
               }
           ?>
-          <div class="col-sm-2">
+          <div class="col-sm-3">
 
             <li class="title"><a href="<?php echo get_term_link((int)$category->term_id,$taxonomy); ?>" data-option-value=".<?php echo $category->slug; ?>" data-option-id="<?php echo $category->term_id; ?>"><?php echo $category->name; ?></a></li>
             <?php if($category->parent == 0): ?>

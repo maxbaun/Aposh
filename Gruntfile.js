@@ -128,7 +128,7 @@ module.exports = function(grunt) {
           }, {
             expand: true,
             cwd: "./",
-            src: ["*.php", "*.css", "*.png", "!.*", "shortcodes/*", "widgets/*", "includes/*", "js/modernizr.js"],
+            src: ["*.php", "*.css", "*.png", "!.*", "shortcodes/*", "widgets/*", "includes/*", "js/modernizr.js", "templates/*"],
             dest: '<%= grunt.option("target") %>'
           }, {
             expand: true,
@@ -236,8 +236,7 @@ module.exports = function(grunt) {
   });
   grunt.registerTask("default", ["watch", "copy:dev"]);
   grunt.registerTask("build", ["sass:production"], function() {
-    var arr;
-    arr = ["jshint"];
+    var arr = [];
     arr.push("clean:production");
     console.log('<%= grunt.option("target") %>');
     if (hasSass) {
