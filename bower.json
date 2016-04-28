@@ -10,7 +10,11 @@
     "stellar": "~0.6.2",
     "jquery-ui": "~1.11.2",
     "requirejs-plugins": "~1.0.3",
-    "bootstrap-select": "~1.6.3"
+    "bootstrap-select": "~1.6.3",
+    "isotope": "^3.0.0",
+    "imagesloaded": "^4.1.0",
+    "jquery-infinite-scroll": "^2.1.0",
+    "jquery-bridget": "^2.0.0"
   },
   "license": "MIT",
   "ignore": [

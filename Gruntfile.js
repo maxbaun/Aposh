@@ -24,7 +24,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ["js/**/*.js"],
-        tasks: ["jshint"],
+        tasks: [],
         options: {
           livereload: true
         }

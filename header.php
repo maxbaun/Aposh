@@ -12,7 +12,13 @@
   		<link rel="author" href="">
   		<?php wp_head() ?>
     </head>
-    <body <?php body_class() ?> data-carousel-interval="<?php echo get_option('aposh_carousel_interval'); ?>">
+    <?php
+        $classes = array();
+        if(is_page_template('template-gallery-iso.php')){
+            $classes[] = 'has-filter';
+        }
+    ?>
+    <body <?php body_class($classes) ?> data-carousel-interval="<?php echo get_option('aposh_carousel_interval'); ?>">
 		<header id="page-header">
       <nav id="social-nav" class="navbar navbar-default">
         <div class="container">
@@ -22,10 +28,10 @@
             <a href="<?php echo get_permalink(get_option('aposh_client_login_page')); ?>">Client Login <span class="glyphicon glyphicon-play"></span></a>
           </div>
         </div><!-- /.container-fluid -->
-      </nav>    
+      </nav>
       <nav class="navbar navbar-aposh">
         <div class="container">
-            
+
             <div class="navbar-header">
               <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                 <img width="281" height="80" src="<?php themeImage('aposh_logo.png'); ?>" alt="A Posh Production Logo"/>
@@ -36,12 +42,12 @@
                   <p class="action"><?php echo get_option('aposh_call_text'); ?></p>
                   <?php echo do_shortcode('[phone-link class="phone"][/phone-link]'); ?>
                 </div>
-                <?php 
+                <?php
                   $call_icon = get_option('aposh_call_icon');
-                  
+
                   if(isset($call_icon) && $call_icon != ''){
                     echo do_shortcode('[phone-link class="phone"]<span class="call-icon"></span>[/phone-link]');
-                  } 
+                  }
                 ?>
               </div>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-nav">
@@ -49,9 +55,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-              </button>            
-            </div>          
-            
+              </button>
+            </div>
+
             <?php
               wp_nav_menu( array(
                   'menu'              => 'primary',
@@ -64,8 +70,8 @@
                   'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                   'walker'            => new wp_bootstrap_navwalker())
               );
-            ?>  
+            ?>
         </div>
-      </nav>    
+      </nav>
 		</header>
 		<div id="content-wrap">

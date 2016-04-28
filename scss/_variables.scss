@@ -7,7 +7,7 @@ $images_dir: '/content/themes/aposhproduction/images/';
 
 /* Sizes */
 $size_logo_width: 281px;
-$size_logo_height: 80px; 
+$size_logo_height: 80px;
 $size_social_nav: 34px;
 $size_border_radius: 4px;
 $size_copy_height: 75px;
@@ -64,6 +64,9 @@ $trans_time: 200ms;
 $trans_mode: ease-in;
 $trans_amt: 10%;
 
+// Filters
+$filter_height:       40px;
+
 @mixin vertical-gradient(){
   background: $color_white; /* Old browsers */
   background: -moz-linear-gradient(top,  $color_white 0%, $color_hr 50%, $color_white 100%); /* FF3.6+ */
@@ -87,13 +90,13 @@ $trans_amt: 10%;
   background: -webkit-linear-gradient(right, $color1, $color2, $color1); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(right, $color1, $color2, $color1); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, $color1, $color2, $color1); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(right, $color1, $color2, $color1); /* Standard syntax */   
+  background: linear-gradient(right, $color1, $color2, $color1); /* Standard syntax */
 }
 
 @mixin centerBackground(){
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;  
+  background-position: center;
 }
 
 @mixin overlay($color:$color_image_overlay){
@@ -112,7 +115,7 @@ $trans_amt: 10%;
   font-size: 56px;
   font-family: narzissswirlsregular;
   line-height: .8;
-  margin-right:10px;  
+  margin-right:10px;
 }
 
 @mixin heroTitle(){
@@ -125,4 +128,3 @@ $trans_amt: 10%;
 @mixin heroTitleMobile(){
   font-size: $size_base * 3;
 }
-

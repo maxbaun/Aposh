@@ -22,13 +22,13 @@ define('map',['jquery','async!https://maps.googleapis.com/maps/api/js?key=AIzaSy
   function initialize(mapId,myMarker) {
     var mapOptions = {
       scrollwheel: false,
-      center: myMarker, 
+      center: myMarker,
       zoom : 17,
       panControl: false,
       zoomControl: false,
       mapTypeControl: false,
       scaleControl: false,
-      streetViewControl: false,       
+      streetViewControl: false,
       mapTypeControlOptions: {
          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'grey']
       },
@@ -36,11 +36,11 @@ define('map',['jquery','async!https://maps.googleapis.com/maps/api/js?key=AIzaSy
         stylers: [{
           saturation: -100
         }]
-      }]           
+      }]
     };
 
     var map = new google.maps.Map(document.getElementById(mapId),
       mapOptions);
-  }    
+  }
 
 });

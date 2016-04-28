@@ -6,35 +6,49 @@ require.config({
       "stellar" : {"deps" : ['jquery']},
       "jqueryui" : {"deps" : ['jquery']},
       "bootstrapSelect" : {"deps" : ['bootstrap']},
-      "googleMaps" : {"deps" : ['jquery']}
-  },  
+      "googleMaps" : {"deps" : ['jquery']},
+	  "imagesloaded" : {"deps":['jquery']},
+	  "isotope" : {"deps":['jquery']},
+	  "jquery-bridget" : {"deps":['jquery']}
+  },
 	"paths": {
     "async" : "vendor/requirejs-plugins/src/async",
     "djep" : "http://poshlogin.com/check_req_info_form.js",
-		"jquery": "vendor/jquery/dist/jquery",
+	"jquery": "vendor/jquery/dist/jquery",
     "bootstrap" : "vendor/bootstrap-sass/assets/javascripts/bootstrap",
     "lightbox" : "vendor/lightbox2/dist/js/lightbox",
     "stellar" : "vendor/stellar/jquery.stellar",
     "jqueryui" : "vendor/jquery-ui/jquery-ui",
     "bootstrapSelect" : "vendor/bootstrap-select/dist/js/bootstrap-select",
     "googleMaps" : "https://maps.googleapis.com/maps/api/js?key=AIzaSyAZyFJjtN1lLLz3UoVF_mDelyTQOSZ0-rY",
+	"imagesloaded" : "vendor/imagesloaded/imagesloaded.pkgd",
+	"infinitescroll" : "vendor/jquery-infinite-scroll/jquery.infinitescroll",
+	"isotope" : "vendor/isotope/dist/isotope.pkgd",
+	"ev-emitter/ev-emitter" : "vendor/ev-emitter/ev-emitter",
+	"layout-mode" : "vendor/isotope/js/layout-mode",
+	"layout-modes/masonry" : "vendor/isotope/js/layout-modes/masonry",
+	"layout-modes/vertical" : "vendor/isotope/js/layout-modes/vertical",
+	"layout-modes/fit-rows" : "vendor/isotope/js/layout-modes/fit-rows",
+	"item" : "vendor/isotope/js/item",
+	"jquery-bridget" : "vendor/jquery-bridget/jquery-bridget",
     "gallery" : "gallery",
-    "map" : "map"
+    "map" : "map",
+	"filters" : "filters"
 	}
 });
 
-require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect','http://poshlogin.com/check_req_info_form.js','gallery','map'], function($) {
-  
+require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bootstrapSelect','http://poshlogin.com/check_req_info_form.js','infinitescroll','isotope','gallery','map','filters'], function($) {
+
   var isMobile = false;
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
    isMobile = true;
   }
 
   // $(document).ready(function(){
-    
+
     /*******************************************************
                     EVENT LISTENERS
-    *******************************************************/ 
+    *******************************************************/
     $(window).resize(function(){
         resizeFooterContact();
         resizeHomeAvailabityWidget();
@@ -46,7 +60,7 @@ require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect',
         var data = $(this).attr('data-video');
         $('#videoModal').find('.modal-content .flex-video').append(data);
         $('#videoModal').modal('show');
-    }); 
+    });
     // empty the modal content when the modal window is closed
     $('#videoModal').on('hide.bs.modal',function(e){
       $('#videoModal').find('.modal-content .flex-video').empty();
@@ -58,13 +72,13 @@ require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect',
         }, {
           duration: 3000,
           easing: "easeOutExpo"
-        });        
+        });
       return false;
-    });      
+    });
 
     /*******************************************************
                     SITE INITIALIZATION
-    *******************************************************/     
+    *******************************************************/
     function initializeSite(){
         resizeFooterContact();
         resizeHomeAvailabityWidget();
@@ -75,11 +89,13 @@ require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect',
         $('.carousel').carousel({
           interval: carouselInterval
         });
+
+		filters('#images','image');
     }
 
     /*******************************************************
                     SELECT PICKER
-    *******************************************************/    
+    *******************************************************/
     $('.selectpicker').selectpicker({
         dropupAuto:false,
         mobile:isMobile
@@ -91,7 +107,7 @@ require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect',
       var selector = 'value='+val;
       $(this).find('option[value="'+val+'"]').attr("selected",true);
       $(this).selectpicker('refresh');
-    });    
+    });
 
 
 
@@ -124,7 +140,39 @@ require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect',
     function resizeFooterContact(){
         var footerHeight = $('#page-footer .news').height();
         $('#page-footer .contact').css('height',footerHeight);
-    }      
+    }
+
+	function filters(containerId,type,callback,elementType){
+		var $filterContainer = $('.filters');
+		var $filterDropdown  = $filterContainer.find('.dropdown');
+
+		if($filterContainer.length > 0){
+			$filterContainer.find('.dropdown-toggle').dropdown();
+
+			$filterDropdown.on('show.bs.dropdown', function(e){
+			  $(this).find('.dropdown-menu').first().slideDown();
+			});
+
+			$filterDropdown.on('hide.bs.dropdown', function(e){
+			  $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+			});
+
+			$filterDropdown.find('select').click(function(e){
+			  e.preventDefault();
+			  e.stopPropagation();
+			});
+		}
+		else{
+			$filterContainer = $(containerId);
+		}
+
+		$filterContainer.aposhFilter({
+			contentWrapper : containerId,
+			type : type,
+			done: callback,
+			elementType:elementType
+		});
+	}
 
     initializeSite();
   // });
@@ -132,7 +180,3 @@ require(['jquery','bootstrap','lightbox','stellar','jqueryui','bootstrapSelect',
 
 
 });
-
-
-
-
