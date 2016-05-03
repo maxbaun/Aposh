@@ -14,6 +14,8 @@
   require_once('phone.php');
   require_once('rental.php');
   require_once('map.php');
+  require_once('images.php');
+  require_once('filters.php');
 
   add_shortcode("page-quote","pageQuote");
   function pageQuote($atts, $content = null){
@@ -50,10 +52,10 @@
       $colClasses = "col-md-12";
 
     $html = '<section class="page-section '.$class.'"><div class="section-content">';
-    
+
     // if(strpos($class,'photo-addon-section') !== false)
       $html .= '<div class="container">';
-      
+
     $html .= '<div class="row"><div class="'.$colClasses.'">';
     if(isset($title) && $title != "")
       $html .= '<h3 class="page-section-title">'.$title.'</h3>';
@@ -75,14 +77,14 @@
       "title" => "",
       "contain" => "true",
       "class" => ""
-    ), $atts));    
+    ), $atts));
 
     $html = '<section class="page-section '.$class.'"><div class="section-content">';
-    
-      
+
+
     if(isset($title) && $title != "")
       $html .= '<h3 class="page-section-title page-section-title-photo-addons">'.$title.'</h3>';
-    
+
     $html .= '<div class="dj-entertainment-content">'.do_shortcode($content).'</div>';
     $html .= '</div></section>';
     return force_balance_tags($html);
@@ -92,12 +94,12 @@
   function photoAddonWidget($atts,$content=null){
     ob_start();
     dynamic_sidebar( 'photo_addons' );
-    
+
     $innerHtml = ob_get_contents();
     $html = do_shortcode('[photo-addons class="grey photo-addons" title="Photo Add Ons"]' . $innerHtml . '[/photo-addons]');
     ob_end_clean();
     return force_balance_tags($html);
-  }  
+  }
 
   add_shortcode("video","video");
   function video($atts,$content = null){
@@ -105,7 +107,7 @@
       "image" => null,
       "title" => "",
       "class" => ""
-    ), $atts)); 
+    ), $atts));
 
     $img = wp_get_attachment_image_src( $image ,'full');
 
@@ -148,9 +150,9 @@
     // $html .= '<span class="testimonial-left">&ldquo;</span>';
     $html .= '<span class="testimonial-text">'.do_shortcode($content).'</span>';
     // $html .= '<span class="testimonial-right">&rdquo;</span>';
-    $html .- '</div>'; 
+    $html .- '</div>';
 
-    return force_balance_tags($html); 
+    return force_balance_tags($html);
   }
 
   add_shortcode('more','more');
@@ -158,7 +160,7 @@
     extract(shortcode_atts(array(
       "link" => "",
       "text" => "Learn More"
-    ), $atts));     
+    ), $atts));
     $html = '<a href="'.$link.'" class="read-more">'.$text.' <span class="glyphicon glyphicon-arrow-right"></span></a>';
     return force_balance_tags($html);
   }
