@@ -128,7 +128,7 @@ module.exports = function(grunt) {
           }, {
             expand: true,
             cwd: "./",
-            src: ["*.php", "*.css", "*.png", "!.*", "shortcodes/*", "widgets/*", "includes/*", "js/modernizr.js", "templates/*"],
+            src: ["*.php", "*.css", "*.png", "!.*", "shortcodes/*", "widgets/*", "includes/*", "js/modernizr.js", "templates/*", "js/vendor/isotope/js/**/*.js"],
             dest: '<%= grunt.option("target") %>'
           }, {
             expand: true,
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      production: ['<%= grunt.option("target") %>']
+      production: ['dist/**/*','!dist/js/vendor/**/*',]
     },
     concat: {
       production: {

@@ -44,6 +44,9 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
    isMobile = true;
   }
 
+		var $images = $('#images');
+		var $filters = $('#filters');
+
   // $(document).ready(function(){
 
     /*******************************************************
@@ -52,6 +55,7 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
     $(window).resize(function(){
         resizeFooterContact();
         resizeHomeAvailabityWidget();
+				resizeGallery();
         // resizeArrows();
     });
     // launch video in modal window
@@ -90,8 +94,48 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
           interval: carouselInterval
         });
 
-		filters('#images','image');
+				filters('#images','image');
+				initializeGallery();
+				initializeFilters();
     }
+
+		function initializeGallery(){
+			$images.imagesLoaded(function(){
+				$images.fadeIn().isotope({
+					itemSelector:'.image',
+					isFitWidth:true
+				});
+			});
+
+		}
+
+		function resizeGallery(){
+			$images.isotope({
+				columnWidth: '.col-sm-4'
+			});
+		}
+
+		function initializeFilters(){
+			$(document).on('click','.filter-selected',function($evt){
+				console.log('here');
+				$evt.preventDefault();
+				$(this).fadeOut().remove();
+				$images.isotope({
+					filter:'*'
+				});
+			});
+			$filters.find('.dropdown-menu li a').click(function($evt){
+
+				$evt.preventDefault();
+				$filters.find('.filter-selected').fadeOut().remove();
+				var $html = $('<span class="filter-selected"><a href="#"><span class="text">'+$(this).text()+'</span><span class="glyphicon glyphicon-remove"></span></a></span>');
+				$filters.find('.filter-header').append($html);
+				var cat = $(this).attr('data-option-value');
+				$images.isotope({
+					filter:cat
+				});
+			});
+		}
 
     /*******************************************************
                     SELECT PICKER
@@ -166,12 +210,12 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
 			$filterContainer = $(containerId);
 		}
 
-		$filterContainer.aposhFilter({
-			contentWrapper : containerId,
-			type : type,
-			done: callback,
-			elementType:elementType
-		});
+		// $filterContainer.aposhFilter({
+		// 	contentWrapper : containerId,
+		// 	type : type,
+		// 	done: callback,
+		// 	elementType:elementType
+		// });
 	}
 
     initializeSite();

@@ -11,7 +11,7 @@
 
     $html = '';
     $html .= '<div class="container">';
-    $html .= '<div id="images">';
+    $html .= '<div id="images" style="display:none;">';
     $html .= do_shortcode($content);
     $html .= '</div>';
     $html .= '</div>';
@@ -36,7 +36,7 @@
     $imgThumbUrl = $imgThumb[0];
   	$imgFullUrl = $imgFull[0];
     $html .= '
-    <div id="" class="image '.$class.'" style="display:none;">
+    <div id="" class="image '.$class.'">
       <a href="'. $imgFullUrl . '" rel="group" data-lightbox="photo-gallery">
         <img class="" src="'. $imgThumbUrl . '" />
       </a>
