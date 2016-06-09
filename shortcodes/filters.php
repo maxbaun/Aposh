@@ -12,10 +12,12 @@
     global $columnClass;
     global $perColumn;
     global $filterCount;
+    global $columnSize;
 
     $filterCount = 0;
     $columnClass = 'col-sm-'.$column_size;
     $perColumn = $per_column;
+    $columnSize = $column_size;
 
     $html .= '
     <div id="filters" class="filters" data-option-key="filter">
@@ -60,11 +62,16 @@
     global $filterCount;
     global $perColumn;
     global $columnClass;
+    global $columnSize;
 
     $html = '';
 
     if($filterCount > 1 && $filterCount % $perColumn === 0){
-      $html .= '</div><div class="'.$columnClass.'">';
+      $html .= '</div>';
+      if($perColumn * (12 / $columnSize) == $filterCount){
+        $html .= '</div><div class="row">';
+      }
+      $html .= '<div class="'.$columnClass.'">';
     }
 
     $html .= '<li><a href="'.$category.'" data-option-value=".'.$category.'" data-option-id="'.$category.'">'. do_shortcode($content) .'</a></li>';
