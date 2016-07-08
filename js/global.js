@@ -43,10 +43,11 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		isMobile = true;
 	}
-
-	var $images = $('#images');
-	var $filters = $('#filters');
-
+	var qsRegex;
+	var galleries = [{
+		elem : $('#images'),
+		selector : '.isotope-gallery-item'
+	}];
 	// $(document).ready(function(){
 
 	/*******************************************************
@@ -58,6 +59,8 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
 		resizeGallery();
 		// resizeArrows();
 	});
+
+
 	// launch video in modal window
 	$('.launch-video').click(function(e){
 		e.preventDefault();
@@ -94,47 +97,99 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
 			interval: carouselInterval
 		});
 
-		filters('#images','image');
-		initializeGallery();
-		initializeFilters();
+		// filters('#images','image');
+		// filters('#images','isotope-gallery-item');
+
+		galleries.forEach(function(gallery){
+			initializeGallery(gallery.elem, gallery.selector);
+			initializeFilters(gallery.elem);
+		});
 	}
 
-	function initializeGallery(){
-		$images.imagesLoaded(function(){
-			$images.fadeIn().isotope({
-				itemSelector:'.image',
-				isFitWidth:true
+	function initializeGallery($elem, selector){
+		$elem.imagesLoaded(function(){
+			$elem.fadeIn().isotope({
+				itemSelector: selector,
+				isFitWidth:true,
+				filter:function(){
+					return qsRegex ? $(this).attr('class').match( qsRegex ) : true;
+				},
+				columnWidth: $elem.find(selector).first().data('size')
 			});
 		});
 
 	}
 
 	function resizeGallery(){
-		$images.isotope({
-			columnWidth: '.col-sm-4'
+		galleries.forEach(function(gallery){
+			gallery.elem.isotope();
 		});
+
 	}
 
-	function initializeFilters(){
-		$(document).on('click','.filter-selected',function($evt){
-			console.log('here');
-			$evt.preventDefault();
-			$(this).fadeOut().remove();
-			$images.isotope({
-				filter:'*'
-			});
-		});
-		$filters.find('.dropdown-menu li a').click(function($evt){
 
-			$evt.preventDefault();
-			$filters.find('.filter-selected').fadeOut().remove();
-			var $html = $('<span class="filter-selected"><a href="#"><span class="text">'+$(this).text()+'</span><span class="glyphicon glyphicon-remove"></span></a></span>');
-			$filters.find('.filter-header').append($html);
-			var cat = $(this).attr('data-option-value');
-			$images.isotope({
-				filter:cat
-			});
-		});
+	function initializeFilters($elem){
+		var filterSelector = $elem.data('filter');
+		var $filter = $(filterSelector);
+
+		var $input = $filter.find('input[type="text"]').first();
+		$input.keyup( function() {
+			var text = $(this).val();
+			var filterText;
+			if(text){
+				filterText = '.filter-' + text.replace(' ', '-');
+				qsRegex = new RegExp( filterText, 'gi' );
+			} else{
+				filterText = '*';
+				qsRegex = null;
+			}
+			console.log(filterText);
+
+			$elem.isotope();
+		} );
+		// keyup(dd(function(){
+		// 	var text = $(this).val();
+		// 	var filterText;
+		// 	if(text){
+		// 		filterText = '.filter-' + text
+		// 	} else{
+		// 		filterText = '*';
+		// 	}
+		// 	console.log(filterText);
+		// 	qsRegex = new RegExp( filterText, 'gi' );
+		// 	$elem.isotope();
+		// }));
+		// $(document).on('click','.filter-selected',function($evt){
+		// 	console.log('here');
+		// 	$evt.preventDefault();
+		// 	$(this).fadeOut().remove();
+		//
+		// });
+		// $filters.find('.dropdown-menu li a').click(function($evt){
+		//
+		// 	$evt.preventDefault();
+		// 	$filters.find('.filter-selected').fadeOut().remove();
+		// 	var $html = $('<span class="filter-selected"><a href="#"><span class="text">'+$(this).text()+'</span><span class="glyphicon glyphicon-remove"></span></a></span>');
+		// 	$filters.find('.filter-header').append($html);
+		// 	var cat = $(this).attr('data-option-value');
+		// 	$elem.isotope({
+		// 		filter:cat
+		// 	});
+		// });
+	}
+
+	function dd( fn, threshold ) {
+		var timeout;
+		return function debounced() {
+			if ( timeout ) {
+				clearTimeout( timeout );
+			}
+			function delayed() {
+				fn();
+				timeout = null;
+			}
+			setTimeout( delayed, threshold || 100 );
+		};
 	}
 
 	/*******************************************************
@@ -186,37 +241,37 @@ require(['jquery','bootstrap','imagesloaded','lightbox','stellar','jqueryui','bo
 		$('#page-footer .contact').css('height',footerHeight);
 	}
 
-	function filters(containerId,type,callback,elementType){
-		var $filterContainer = $('.filters');
-		var $filterDropdown  = $filterContainer.find('.dropdown');
-
-		if($filterContainer.length > 0){
-			$filterContainer.find('.dropdown-toggle').dropdown();
-
-			$filterDropdown.on('show.bs.dropdown', function(e){
-				$(this).find('.dropdown-menu').first().slideDown();
-			});
-
-			$filterDropdown.on('hide.bs.dropdown', function(e){
-				$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
-			});
-
-			$filterDropdown.find('select').click(function(e){
-				e.preventDefault();
-				e.stopPropagation();
-			});
-		}
-		else{
-			$filterContainer = $(containerId);
-		}
-
-		// $filterContainer.aposhFilter({
-		// 	contentWrapper : containerId,
-		// 	type : type,
-		// 	done: callback,
-		// 	elementType:elementType
-		// });
-	}
+	// function filters(containerId,type,callback,elementType){
+	// 	var $filterContainer = $('.filters');
+	// 	var $filterDropdown  = $filterContainer.find('.dropdown');
+	//
+	// 	if($filterContainer.length > 0){
+	// 		$filterContainer.find('.dropdown-toggle').dropdown();
+	//
+	// 		$filterDropdown.on('show.bs.dropdown', function(e){
+	// 			$(this).find('.dropdown-menu').first().slideDown();
+	// 		});
+	//
+	// 		$filterDropdown.on('hide.bs.dropdown', function(e){
+	// 			$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+	// 		});
+	//
+	// 		$filterDropdown.find('select').click(function(e){
+	// 			e.preventDefault();
+	// 			e.stopPropagation();
+	// 		});
+	// 	}
+	// 	else{
+	// 		$filterContainer = $(containerId);
+	// 	}
+	//
+	// 	// $filterContainer.aposhFilter({
+	// 	// 	contentWrapper : containerId,
+	// 	// 	type : type,
+	// 	// 	done: callback,
+	// 	// 	elementType:elementType
+	// 	// });
+	// }
 
 	initializeSite();
 	// });

@@ -16,6 +16,7 @@
   require_once('map.php');
   require_once('images.php');
   require_once('filters.php');
+  require_once('isotope-gallery.php');
 
   add_shortcode("page-quote","pageQuote");
   function pageQuote($atts, $content = null){

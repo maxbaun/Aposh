@@ -1,7 +1,7 @@
 <?php
 function add_gallery_taxonomies() {
 
-  register_taxonomy('gallery', 'gallery', array(
+  register_taxonomy('gallery-category', 'gallery', array(
     // Hierarchical taxonomy (like categories)
     'hierarchical' => true,
     // This array of options controls the labels displayed in the WordPress Admin UI
@@ -21,9 +21,9 @@ function add_gallery_taxonomies() {
 
     // Control the slugs used for this taxonomy
     'rewrite' => array(
-      'slug' => 'gallery', // This controls the base slug that will display before each term
-      'with_front' => false, 
-      'hierarchical' => true 
+      'slug' => 'gallery/category', // This controls the base slug that will display before each term
+      'with_front' => false,
+      'hierarchical' => true
     ),
   ));
 }

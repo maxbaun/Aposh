@@ -1,0 +1,31 @@
+.isotope-gallery-item{
+    margin-bottom:15px;
+    text-align: center;
+    float:none;
+    .image-container{
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    .overlay{
+      @include overlay($color_gallery_thumb_overlay);
+      opacity:0;
+      padding: 15px;
+    }
+    .text{
+      color: $color_white !important;
+      font-family: cinzelbold;
+      height:auto !important;
+      margin-top: 0px;
+      font-size:18px;
+      margin-bottom: 0px;
+    }
+    img{
+        max-width: 100%;
+    }
+}
+.isotope-gallery-item:hover{
+    .overlay{
+      opacity:1;
+    }
+}

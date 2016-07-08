@@ -80,4 +80,29 @@
     return $html;
   }
 
+  add_shortcode("search-filter","search_filter_callback");
+  function search_filter_callback($atts,$content=null){
+    extract(shortcode_atts(array(
+      'id'=> '',
+      'placeholder'=>'Type to search...',
+      'label' => ''
+    ), $atts));
+
+    global $filterCount;
+    global $perColumn;
+    global $columnClass;
+    global $columnSize;
+
+    $html = '';
+
+    $html .= '<div class="filter-search" id="'.$id.'">';
+        if(isset($label) && $label != ''){
+            $html .= '<label for="filter-search">' .$label.'</label>';
+        }
+        $html .= '<input type="text" class="form-control" name="filter-search" placeholder="'.$placeholder.'"/>';
+    $html .= '</div>';
+
+    return force_balance_tags($html);
+  }
+
 ?>
