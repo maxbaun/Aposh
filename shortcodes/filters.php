@@ -95,12 +95,16 @@
 
     $html = '';
 
+    global $post;
+
+    $html .= '<form action="'.get_the_permalink($post->ID).'" method="GET">';
     $html .= '<div class="filter-search" id="'.$id.'">';
         if(isset($label) && $label != ''){
             $html .= '<label for="filter-search">' .$label.'</label>';
         }
-        $html .= '<input type="text" class="form-control" name="filter-search" placeholder="'.$placeholder.'"/>';
+        $html .= '<input type="text" class="form-control" autocomplete="off" name="search" placeholder="'.$placeholder.'"/>';
     $html .= '</div>';
+    $html .= '</form>';
 
     return force_balance_tags($html);
   }

@@ -61,7 +61,7 @@
   border-radius: 0px !important;
 }
 
-.gallery{
+
   .gallery-item{
     visibility: visible;
     display: block;
@@ -109,7 +109,7 @@
       visibility: hidden;
     }
   }
-}
+
 
 @media (max-width: $screen-md-min) {
   .gallery{

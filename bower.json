@@ -14,7 +14,8 @@
     "isotope": "^3.0.0",
     "imagesloaded": "^4.1.0",
     "jquery-infinite-scroll": "^2.1.0",
-    "jquery-bridget": "^2.0.0"
+    "jquery-bridget": "^2.0.0",
+    "bootstrap3-typeahead": "git://github.com/bassjobsen/Bootstrap-3-Typeahead.git#master"
   },
   "license": "MIT",
   "ignore": [
