@@ -22,8 +22,7 @@ function theme_enqueue_scripts(){
 	// }
 
 
-	if($GLOBALS['PRODUCTIONDEV'] === "APOSHDEV"){
-
+	if(APOSHDEV){
 
 		wp_register_script('require', get_bloginfo('template_url') . '/js/vendor/requirejs/require.js', array(), false, true);
 		wp_enqueue_script('require');

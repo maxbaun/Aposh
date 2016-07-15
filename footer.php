@@ -12,10 +12,10 @@
     <?php
       $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
       $args = array(
-        'posts_per_page' => 3,  
+        'posts_per_page' => 3,
         'paged' =>          $paged,
         'orderby'          => 'post_date',
-        'order'            => 'DESC',        
+        'order'            => 'DESC',
       );
 
       $recent_posts = query_posts($args);
@@ -37,7 +37,7 @@
                   $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'thumbnail');
 
                   if(!isset($img) || $img == null){
-                  
+
                     $img[] = getThemeImage('no_thumb.jpg');
                   }
                   // $img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'full');
@@ -54,7 +54,7 @@
                       <div class="text">
                         <p class="preview"><?php echo $title; ?></p>
                         <p class="author"><?php echo $date; ?> BY <?php echo $author ?></p>
-                      </div>                    
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -65,7 +65,7 @@
               <!-- MIDDLE FOOTER WIDGER -->
             </div>
             <div class="col-md-4">
-              <?php echo do_shortcode('[contact-info][/contact-info]'); ?>                 
+              <?php echo do_shortcode('[contact-info][/contact-info]'); ?>
             </div>
           </div>
         </div>
@@ -82,9 +82,9 @@
           </div>
         </div>
       </div>
-			
+
 		</footer>
     <?php include('partials-lightbox.php'); ?>
-		<?php wp_footer() ?>
+		<?php wp_footer(); ?>
 	</body>
 </html>
