@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   var distDir, distName, hasSass, hasStylus, npmDependencies;
-  npmDependencies = require("./package.json").devDependencies;
+  npmDependencies = require("./package.json").dependencies;
   hasSass = npmDependencies["grunt-contrib-sass"] !== undefined;
   hasStylus = npmDependencies["grunt-contrib-stylus"] !== undefined;
   distName = "aposh_dist_" + new Date().getTime();
@@ -188,13 +188,10 @@ module.exports = function(grunt) {
         ]
       }
     },
-    chmod: {
-      options: {
-        mode: "777"
-      },
-      dist: {
-        src: ["dist"]
-      }
+    githooks:{
+        all:{
+            'pre-commit' : 'build --production'
+        }
     },
     clean: {
       production: ['dist/**/*','!dist/js/vendor/**/*',]
@@ -211,27 +208,6 @@ module.exports = function(grunt) {
           '<%= grunt.option("target") %>/css/vendor.css': ['<%= grunt.option("target") %>/css/vendor.css']
         }
       }
-    },
-    "ftp-deploy": {
-      production: {
-        auth: {
-          host: "ftp.aposhproduction.com",
-          port: 21,
-          authKey: "aposhKey"
-        },
-        src: "dist",
-        dest: "/aposhdev/content/themes/aposhproduction",
-        serverSep: "/",
-        concurrency: 4,
-        progress: true
-      }
-    },
-    zip: {
-      production: {
-        src: ['<%= grunt.option("target") %>/**/*'],
-        dest: "releases/" + distName + ".zip",
-        cwd: "dist/"
-      }
     }
   });
   grunt.registerTask("default", ["watch", "copy:dev"]);
@@ -247,7 +223,7 @@ module.exports = function(grunt) {
     }
     arr.push("concat:production");
     arr.push("cssmin:production");
-    arr.push("imagemin:production", "svgmin:production", "requirejs:production", "copy:production", "zip:production");
+    arr.push("imagemin:production", "svgmin:production", "requirejs:production", "copy:production");
     grunt.task.run(arr);
     return arr;
   });
@@ -275,12 +251,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-imagemin");
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-svgmin");
-  grunt.loadNpmTasks("grunt-chmod");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-cssmin");
-  grunt.loadNpmTasks("grunt-ftp-deploy");
-  grunt.loadNpmTasks("grunt-zip");
+  grunt.loadNpmTasks('grunt-githooks');
   return grunt.registerTask("bower-install", function() {
     var bower, done;
     done = this.async();
