@@ -1,0 +1,78 @@
+.btn,button{
+  @include transition(all $trans_time $trans_mode);
+  text-transform: uppercase;
+  outline: 0 !important;
+  border: none;
+  box-shadow: none !important;
+  font-size:1em;
+}
+
+.btn:hover:not(.navbar-toggle),
+button:hover:not(.navbar-toggle){
+  border:none;
+}
+
+.btn-cta,
+.btn-cta:active,
+.btn-cta:focus{
+  padding:15px 30px;
+  font-size: $size_base * 1.188;
+  background-color: $color_cta;
+  color: $color_white;
+  border:none;
+  @include border-radius(0px);
+  font-family: latoregular;
+}
+
+.btn-cta.btn-sm{
+  padding:10px 25px;
+  font-size: $size_base * .875;
+}
+
+.btn-cta:hover{
+  background-color: darken($color_cta, $trans_amt);
+  color: lighten($color_white, $trans_amt);
+}
+
+.cta-wrapper{
+  padding: 5px;
+  @include transition(background-color $trans_time $trans_mode);
+  width: auto;
+  display: inline-block;
+}
+
+.cta-wrapper:hover{
+  
+  background-color: rgba(255,255,255,.5);
+  .btn-cta{
+    background-color: $color_cta;
+    color: $color_white;
+  }
+
+}
+
+.btn-learn,
+.btn-learn:hover{
+  font-size: $size_base * .9;
+  padding: 5px 10px;
+  border: 2px solid $color_white !important;
+  background-color: $color_transparent;
+  color: $color_white;
+  font-family: latoregular;
+  border-radius:0px;
+  box-shadow: none;
+}
+
+
+
+
+.btn-availability:hover{
+  background-color: darken($color_grey, $trans_amt);
+}
+
+
+@media (max-width: $screen-md-min) {
+  // .btn-cta{
+  //   padding:7.5px 15px;
+  // }
+}

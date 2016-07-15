@@ -1,0 +1,36 @@
+{
+  "name": "APoshProduction-Template",
+  "version": "0.0.2",
+  "description": "A wordpress template for a posh production",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "Yeoman",
+    "Wordpress",
+    "YeoPress",
+    "Template"
+  ],
+  "author": "Wes Todd",
+  "license": "BSD",
+  "devDependencies": {
+    "bower": "~0.8.6",
+    "grunt": "~0.4.1",
+    "grunt-bower-requirejs": "~0.4.1",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.12.1",
+    "grunt-contrib-imagemin": "~0.1.4",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-contrib-sass": "~0.8.1",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-ftp-deploy": "^0.1.10",
+    "grunt-svgmin": "~0.1.0",
+    "grunt-zip": "^0.16.2"
+  },
+  "dependencies": {
+    "grunt-chmod": "^1.1.1",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-copy": "^0.7.0"
+  }
+}

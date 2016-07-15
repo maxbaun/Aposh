@@ -1,0 +1,85 @@
+#page-footer{
+  color: $color_white;
+  .footer{
+    background-image: url($images_dir + 'footer_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-color: $color_footerBg;
+    min-height:400px;
+
+    .news{
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      h1{
+        font-family:narzissdropsregular;
+        text-transform: capitalize;
+      }  
+    }
+
+    .contact-info{
+      height:400px;
+      
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      .vertical-center-wrapper{
+        display:table;
+        height:100%;
+        width: 100%;        
+      }
+      .vertical-center{
+        display:table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .copy{
+    background: $color_black;
+    min-height: $size_copy_height;
+
+    .container{
+      padding-top: 18.5px;
+      padding-bottom: 18.5px;
+      height: 100%;      
+    }
+
+    .footer-copyright{
+      color: $color_white;
+      font-size: $size_base * .88;
+      margin-bottom:0px;
+      opacity: .5;
+      font-family: latoregular;
+      font-weight: 200;
+      a{
+        color: $color_white;
+        @include transition(opacity $trans_time $trans_mode);
+      }
+    }
+    a:hover{
+      opacity: 1; 
+      img{
+        opacity: 1;
+      }
+    }
+    .logo{
+      opacity: .3;
+      @include transition(opacity $trans_time $trans_mode);
+    }
+  }
+
+  @media (max-width: $screen-md-min) {
+    .copy{
+      text-align: center;
+    }
+    .logo{
+      margin-top: 15px;
+    }
+
+    .contact-info{
+      height: auto !important;
+    }
+
+  }
+}

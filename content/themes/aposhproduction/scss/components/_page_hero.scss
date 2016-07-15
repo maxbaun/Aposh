@@ -1,0 +1,55 @@
+.page-hero{
+  text-align: center;
+  // background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: auto 443px;
+  background-position: center;
+  height: 443px;
+  width: 100%;
+  position: relative;
+  .overlay{
+    @include overlay();
+  }
+  .page-hero-inner{
+    padding-top:90px;
+    z-index: 4;
+    position: absolute;
+    width:100%;
+    height: 100%;
+  }
+  .hero-title{
+    color: $color_white;
+    @include heroTitle();
+    margin-bottom: 0px;
+  }
+}
+
+.page-hero .availability-widget{
+  .title{
+    font-family: playballregular;
+    font-size: 40px;
+    color: $color_white;
+    margin-bottom: 20px !important;
+    line-height: 0.814;
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  .page-hero{
+    .page-hero-inner{
+      // padding-top:45px;
+    }
+    .hero-title{
+      @include heroTitleMobile();
+    }
+  }
+
+  .page-hero .availability-widget{
+    .title{
+      font-family: playballregular;
+      font-size: 30px;
+      color: $color_white;
+      line-height: 0.814;
+    }
+  }  
+}

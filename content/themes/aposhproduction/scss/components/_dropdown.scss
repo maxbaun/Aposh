@@ -1,0 +1,70 @@
+select.selectpicker{
+  opacity:0;
+}
+// .dropdown-menu li{
+//   @include transition(none $trans_time $trans_mode);
+// }
+.dropdown-menu{
+  @include border-radius(0px);  
+  padding:0px;
+  margin: 0px;
+  // @include opacity(0);
+  // @include transition(opacity 1000ms $trans_mode);
+}
+// .dropdown.open .dropdown-menu{
+//   @include opacity(1);
+//   @include transition(opacity $trans_time $trans_mode);
+// }
+.bootstrap-select{
+  height:auto;
+}
+.bootstrap-select.dropdown ul.dropdown-menu,
+.bootstrap-select.dropdown .dropdown-menu{
+  background-color: $color_transparent !important;
+  color: $color_white !important;
+  border:none !important;
+  box-shadow: none !important;
+
+  li a{
+    color: $color_white !important;
+    background-color: $color_cta;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  li:hover{
+    background-color: $color_white;
+  }
+  li a:hover{
+    background-color: $color_ctaLight;
+  }
+}
+
+.dropdown .dropdown-menu.dates{
+  li{
+    width:33.333333%;
+    display:inline-block;
+    float:left;
+  }
+}
+
+.dropdown.form-control button{
+  height: 42px;
+}
+
+.dropdown button{
+  @extend .btn;
+  background-color: $color_grey !important;
+  color: $color_white !important;
+  @include border-radius(0px);
+  font-family: latoregular; 
+  outline: none !important; 
+  
+}
+
+.bootstrap-select .btn:focus,
+.dropdown button:focus{
+  outline: none !important; 
+}
+
+

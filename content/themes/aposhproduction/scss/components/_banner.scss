@@ -1,0 +1,13 @@
+.page-banner{
+  text-align: center;
+  background-image: url($images_dir + 'bg_banner.jpg');
+  width: 100%;
+  min-height:75px;
+  h1{
+    color: $color_white;
+    margin-bottom: 0px;
+    line-height: 1;
+    font-size: $size_base * 2.5;
+    padding:15px;
+  }
+}

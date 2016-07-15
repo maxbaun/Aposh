@@ -1,0 +1,28 @@
+.contact-info{
+
+
+  h2{
+    font-family:narzissdropsregular;
+    margin-bottom:20px;
+  }
+
+  .phone{
+    color: $color_cta;
+    font-size: $size_base * 2;
+    margin-bottom:10px; 
+  }
+
+  .contact-extra{
+    font-weight:200;
+    font-family: latoregular;
+
+    .location-name{
+      margin: 10px 0px 5px 0px;
+      display: block;
+      font-size: 18px;
+    }
+  }
+  .social{
+    margin-top:30px;
+  }
+}

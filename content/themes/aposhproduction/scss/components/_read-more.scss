@@ -1,0 +1,17 @@
+    .read-more{
+      color: $color_greyDark !important;
+      font-family: latoregular;
+      font-size: 13px;
+
+      .glyphicon{
+        margin-left:10px;
+        top:2px;
+        @include transition(all $trans_time $trans_mode);
+      }
+    }
+    .read-more:hover{
+      color: $color_cta !important;
+      .glyphicon{
+        margin-left: 15px;
+      }
+    }

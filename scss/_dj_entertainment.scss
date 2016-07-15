@@ -1,8 +1,0 @@
-.dj-entertainment-content{
-
-}
-
-.dj-entertainment-content:not(h1):not(h2):not(h3)::first-letter{
-  @include firstLetterCaps();
-  font-size:46px;  
-}
