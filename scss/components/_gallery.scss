@@ -1,124 +1,142 @@
 #images{
-  @extend .row;
-  margin-left:-15px;
-  margin-right:-15px;
-  .grid-sizer{
-    @extend .col-xs-4;
-  }
-  .image{
-    // @extend .col-xs-4;
+	@extend .row;
+	margin-left:-15px;
+	margin-right:-15px;
+	.grid-sizer{
+		@extend .col-xs-4;
+	}
+	.image{
+		// @extend .col-xs-4;
 
-    // width: 33.333%;
-    padding:15px;
-    float:none;
+		// width: 33.333%;
+		padding:15px;
+		float:none;
 
-    img{
-      width:100%;
-    }
-  }
+		img{
+			width:100%;
+		}
+	}
 }
 
 #infscr-loading,
 #loading-indicator{
-  position: fixed;
-  text-align: center;
-  bottom: 30px;
-  left: 0;
-  right: 0;
-  max-width: 240px;
-  margin-right: auto;
-  margin-left: auto;
-  z-index: 100;
-  font-size: 16px;
-  background: rgba($color_greyWhite, 0.8 );
-  padding: 20px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+	position: fixed;
+	text-align: center;
+	bottom: 30px;
+	left: 0;
+	right: 0;
+	max-width: 240px;
+	margin-right: auto;
+	margin-left: auto;
+	z-index: 100;
+	font-size: 16px;
+	background: rgba($color_greyWhite, 0.8 );
+	padding: 20px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 
 @media(max-width: 400px){
-  #images{
-    .image{
-      // width:100%;
-    }
-  }
+	#images{
+		.image{
+			// width:100%;
+		}
+	}
 }
 
 .gallery{
-  div[class*=col-md]{
-    margin-bottom:15px;
-    // margin-top: 15px;
-    text-align: center;
-    img{
-      width:100%;
-    }
-  }
+	div[class*=col-md]{
+		margin-bottom:15px;
+		// margin-top: 15px;
+		text-align: center;
+		img{
+			width:100%;
+		}
+	}
 }
 
 .lb-outerContainer{
-  border-radius: 0px !important;
+	border-radius: 0px !important;
 }
 
 
-  .gallery-item{
-    visibility: visible;
-    display: block;
+.gallery-item{
+	visibility: visible;
+	display: block;
 
-    @include transition(all $trans_time $trans_mode, visibility $trans_time $trans_mode );
+	@include transition(all $trans_time $trans_mode, visibility $trans_time $trans_mode );
 
-    .text{
-      margin-top:15px;
-      color: $color_grey !important;
-      visibility: visible;
-      margin-bottom:0px;
-      height:50px;
-    }
-    .thumb{
-      max-width:100%;
-      // width: 100% !important;
-      background-repeat: no-repeat;
-      background-position: center;
-      position: relative;
-      .overlay{
-        @include overlay($color_gallery_thumb_overlay);
-        // transition: opacity 1000ms ease-in;
-        opacity:0;
-      }
-      .text{
-        color: $color_white !important;
-        font-family: cinzelbold;
-        height:auto !important;
-        margin-top: 0px;
-        font-size:18px;
-      }
-    }
-    .thumb:hover{
-      .overlay{
-        opacity:1;
-      }
-    }
+	.text{
+		margin-top:15px;
+		color: $color_grey !important;
+		visibility: visible;
+		margin-bottom:0px;
+		height:50px;
+	}
+	.gallery-item-inner {
+		display: block;
+		width: 100%;
+		height: 161px;
+		position: relative;
+	}
+	.thumb{
+		width:100%;
+		height: 100%;
+		position: relative;
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+	.overlay{
+		@include overlay($color_gallery_thumb_overlay);
+		// transition: opacity 1000ms ease-in;
+		opacity:0;
+		z-index: 2;
+		padding: 10px;
 
-  }
-  .gallery-item.hide-me{
-    width:0px;
-    height:0px;
-    visibility: hidden;
-    .text{
-      visibility: hidden;
-    }
-  }
+		.text{
+			color: $color_white !important;
+			font-family: cinzelbold;
+			height:auto !important;
+			margin-top: 0px;
+			font-size:18px;
+		}
+	}
+	&:hover{
+		.overlay{
+			opacity:1;
+		}
+	}
+
+}
+.gallery-item.hide-me{
+	width:0px;
+	height:0px;
+	visibility: hidden;
+	.text{
+		visibility: hidden;
+	}
+}
 
 
 @media (max-width: $screen-md-min) {
-  .gallery{
-    .gallery-item{
-      .thumb{
-        margin: auto !important;
-      }
-    }
-  }
+	.gallery{
+		.gallery-item{
+			.thumb{
+				margin: auto !important;
+			}
+		}
+	}
 }
 
 @media (max-width: $screen-sm-min) {

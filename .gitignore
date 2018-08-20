@@ -14,3 +14,14 @@ content/themes/*
 !content/themes/aposhproduction
 
 wordpress
+
+
+node_modules/*
+bower_components/
+js/vendor/
+dist/
+releases/
+.sass-cache/
+css/
+css/global.css
+.DS_Store

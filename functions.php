@@ -21,8 +21,10 @@ function theme_enqueue_scripts(){
 	// 	wp_enqueue_script('djep-script');
 	// }
 
+	// UNCOMMENT FOR DEV
+	// $APOSHDEV = true;
 
-	if(APOSHDEV){
+	if($APOSHDEV === true){
 
 		wp_register_script('require', get_bloginfo('template_url') . '/js/vendor/requirejs/require.js', array(), false, true);
 		wp_enqueue_script('require');

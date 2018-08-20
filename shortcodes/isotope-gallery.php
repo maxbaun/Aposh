@@ -24,7 +24,7 @@ function isotope_gallery_callback($atts,$content=null){
     $tax_query = array('relation' => 'OR');
     $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
-    $html .= '<div id="images" style="display:none;" data-filter="#'.$filter.'" data-categories="'.$categories.'">';
+	$html .= '<div id="images" style="display:none;" data-filter="#'.$filter.'" data-categories="'.$categories.'">';
 
     if(isset($type) && $type == 'category'){
         foreach($category_arr as $c){
@@ -105,8 +105,11 @@ function isotope_gallery_render_categories($gallery, $per_page){
 
     $html .= '<div class="isotope-gallery-item gallery-item '.$col_class.' '.$filters.'" data-size="'.$col_class.'">';
     $html .= '<a href="'.$permalink.'">';
-    $html .= '<div class="image-container" style="width: '.$featured_image[1].'px; height: 100%;">';
-    $html .= '<img src="'.$featured_image['0'].'"/>';
+	$html .= '<div class="image-container">';
+	$html .= '<div class="image">';
+    $html .= '<div style="width: 100%; padding-top: ' . $featured_image[2] / $featured_image[1] . ' %;"></div>';
+	$html .= '<img src="'.$featured_image['0'].'"/>';
+	$html .= '</div>';
     $html .= '<div class="overlay">';
     $html .= '<div class="vertical-center-wrapper">';
     $html .= '<div class="vertical-center">';

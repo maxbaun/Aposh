@@ -9,11 +9,12 @@
         <li data-target="#home-slider" data-slide-to="0" class="active"></li>
         <li data-target="#home-slider" data-slide-to="1" class=""></li>
         <li data-target="#home-slider" data-slide-to="2" class=""></li>
+        <li data-target="#home-slider" data-slide-to="3" class=""></li>
       </ol>
 
       <div class="carousel-inner" role="listbox">
         <?php dynamic_sidebar( 'home_slider' ); ?>
-      </div> 
+      </div>
       <a class="left carousel-control" href="#home-slider" role="button" data-slide="prev">
         <div></div>
         <span class="sr-only">Previous</span>
@@ -23,7 +24,7 @@
         <span class="sr-only">Next</span>
       </a>
 </div>
-<div id="page-content">  
+<div id="page-content">
   <section class="white">
     <div class="container">
       <div class="section-content">
@@ -79,7 +80,7 @@
             <p class="text">Our Photo Booths, Green Screens, Hashtag Printing, and Video Booths are guaranteed to be a hit at every party! </p>
             <hr/>
             <a href="#" class="cta">Learn More <span class="glyphicon glyphicon-arrow-right"></span></a>
-          </div>   -->            
+          </div>   -->
         </div>
       </div>
     </div>
@@ -93,7 +94,7 @@
 
 WeddingWire.createReview({"vendorId":"bbf392ccded13860", "id":"ww-widget-reviews"});
 
---></script>          
+--></script>
           </div>
           <div class="col-md-8 col-md-offset-1 availability-widget-wrapper">
           <div class="vertical-center-wrapper">
@@ -172,15 +173,15 @@ WeddingWire.createReview({"vendorId":"bbf392ccded13860", "id":"ww-widget-reviews
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2020</a></li>
                     </ul>
                   </div>
-                </div>          
+                </div>
                 <div class="btn-wrapper">
-                  <a class="btn btn-cta">Check Now</a>  
-                </div>          
+                  <a class="btn btn-cta">Check Now</a>
+                </div>
               </div>
             </div>
           </div> -->
         </div>
-      </div>  
+      </div>
     </div>
 
   </section>
@@ -196,7 +197,7 @@ WeddingWire.createReview({"vendorId":"bbf392ccded13860", "id":"ww-widget-reviews
           </div>
           <div class="col-md-4 text-center">
             <img src="<?php themeImage('rewards_knot.jpg'); ?>"/>
-          </div>                
+          </div>
         </div>
       </div>
     </div>
