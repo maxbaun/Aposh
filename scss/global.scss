@@ -1,7 +1,14 @@
 /* ==========================================================================
 	Imports
 /* ========================================================================== */
-@import '../js/vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss','../js/vendor/bourbon/app/assets/stylesheets/bourbon','reset', 'variables', 'helpers' ,'buttons','icons','fonts', 'components' , 'header' , 'footer', 'section', 'video', 'video-thumb' ,'availability', 'home', 'dj_entertainment','google_maps';
+@import '~bootstrap-select/dist/css/bootstrap-select.min.css';
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import '~lightbox2/dist/css/lightbox.min.css';
+@import '~bourbon/core/_bourbon.scss';
+
+// @import '../js/vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+// @import '../js/vendor/bourbon/app/assets/stylesheets/bourbon';
+@import 'reset', 'variables', 'helpers' ,'buttons','icons','fonts', 'components' , 'header' , 'footer', 'section', 'video', 'video-thumb' ,'availability', 'home', 'dj_entertainment','google_maps';
 
 /* ==========================================================================
 	Base

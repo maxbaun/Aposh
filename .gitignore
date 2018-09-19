@@ -4,6 +4,7 @@ content/upgrade
 content/uploads
 local-config.php
 
+.DS_Store
 
 !content
 content/*
