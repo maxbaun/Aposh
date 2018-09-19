@@ -5,6 +5,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "NODE_ENV=production webpack -p",
+		"prod": "npm run build && node deploy.js",
 		"start": "NODE_ENV=development webpack --watch --mode development"
 	},
 	"keywords": [
@@ -35,7 +36,8 @@
 		"grunt-contrib-watch": "~0.5.1",
 		"grunt-githooks": "^0.6.0",
 		"grunt-svgmin": "~0.1.0",
-		"lightbox2": "^2.10.0"
+		"lightbox2": "^2.10.0",
+		"sftp-sync-deploy": "^0.7.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.0.0",

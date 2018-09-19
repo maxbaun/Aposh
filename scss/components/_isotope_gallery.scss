@@ -2,16 +2,20 @@
 	margin-bottom:15px;
 	text-align: center;
 	float:none;
-	width: 25%;
-	position: relative !important;
-	top: 0 !important;
-	left: 0 !important;
 	display: inline-block;
 	vertical-align: top;
 
 	.image-container {
-		height: 200px;
 		position: relative;
+
+		> a {
+			display: block;
+			position: relative;
+
+			img {
+				object-fit: cover;
+			}
+		}
 	}
 	.image{
 		position: relative;

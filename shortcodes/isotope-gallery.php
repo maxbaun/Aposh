@@ -107,7 +107,7 @@ function isotope_gallery_render_categories($gallery, $per_page){
     $html .= '<a href="'.$permalink.'">';
 	$html .= '<div class="image-container">';
 	$html .= '<div class="image">';
-    $html .= '<div style="width: 100%; padding-top: ' . $featured_image[2] / $featured_image[1] . ' %;"></div>';
+    $html .= '<div style="width: 100%; padding-top: ' . $featured_image[2] / $featured_image[1] * 100 . '%;"></div>';
 	$html .= '<img src="'.$featured_image['0'].'"/>';
 	$html .= '</div>';
     $html .= '<div class="overlay">';
