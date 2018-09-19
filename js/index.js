@@ -9,7 +9,7 @@ import './plugins/typeahead';
 import '../scss/global.scss';
 
 // Import custom css
-import './modernizr';
+// import './modernizr';
 import './main';
 import './gallery';
 import './filters';

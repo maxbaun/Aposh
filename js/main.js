@@ -65,7 +65,6 @@ function searchGalleries(search, process) {
 		},
 		success: function(data) {
 			data = JSON.parse(data);
-			console.log(data);
 			process(data);
 		}
 	});
@@ -79,7 +78,6 @@ $('.filter-search input').on('keyup', function(e) {
 		.parent()
 		.attr('id');
 	gallerySearchCategories = $('[data-filter="#' + id + '"]').data('categories');
-	console.log(gallerySearchCategories);
 
 	$elem.typeahead({
 		source: searchGalleries,
@@ -168,7 +166,6 @@ function initializeFilters($elem) {
 			filterText = '*';
 			qsRegex = null;
 		}
-		console.log(filterText);
 
 		$elem.isotope();
 	});
